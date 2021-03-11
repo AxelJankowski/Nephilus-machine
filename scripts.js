@@ -1,23 +1,25 @@
-const slot1 = [
-                'wściekle', 'powoli', 'agresywnie', 'szybko',
-                'samotnie', 'widowiskowo', 'śpiewnie', '',
-                'przyjaźnie', 'niespokojnie', 'obleśnie', 'głośno'
-            ];
-const slot2 = [
-                'pożre', 'zamorduje', 'wypatroszy', 'przeleci',
-                'rozpierdoli', 'poliże', 'podniesie', 'puknie',
-                'zidentyfikuje', 'zdepcze', 'wyrzuci', 'wkurwi'
-            ];      
-const slot3 = [
-                'kupę', 'żonę', 'brata', 'banshi',
-                'psa', 'pracownika', 'konia', 'fotel',
-                'pierścień', 'bochen', 'wilka', 'przyjaciela'
-            ];
-const slot4 = [
-                'brata', 'króla', 'cioci', 'dowódcy',
-                'cienia', 'sąsiada', 'matki', 'stajennego',
-                'smoka', 'z niebios', 'goblina', 'Artezana'
-            ];
+const reels = {
+    first: [
+        'wściekle', 'powoli', 'agresywnie', 'prędko',
+        'samotnie', 'widowiskowo', 'śpiewająco', 'z zimną krwią',
+        'przyjaźnie', 'niespokojnie', 'całkiem obleśnie', 'głośno'
+    ],
+    second: [
+        'pożre', 'zamorduje', 'wypatroszy', 'przeleci',
+        'rozpierdoli', 'poliże', 'podniesie', 'puknie',
+        'zrobi w chuja', 'zdepcze', 'pokroi', 'wkurwi'
+    ],
+    third: [
+        'kupę', 'żonę', 'brata', 'banshee',
+        'psa', 'rzecznika', 'konia', 'fotel',
+        'pierścień', 'bochen', 'wilka', 'przyjaciela'
+    ],
+    fourth: [
+        'brata', 'króla', 'Yemika', 'dowódcy',
+        'mroku', 'Sevrona', 'Iluae', 'stajennego',
+        'smoka', 'z niebios', 'goblina', 'Artezana'
+    ]
+}
 
 const SLOTS_PER_REEL = 12;
 // radius = Math.round( ( panelWidth / 2) / Math.tan( Math.PI / SLOTS_PER_REEL ) ); 
@@ -87,10 +89,10 @@ function spin(timer) {
     $(document).ready(function() {
 
         // initiate slots 
-        createSlots($('#ring1'), slot1);
-        createSlots($('#ring2'), slot2);
-        createSlots($('#ring3'), slot3);
-        createSlots($('#ring4'), slot4);
+        createSlots($('#ring1'), reels.first);
+        createSlots($('#ring2'), reels.second);
+        createSlots($('#ring3'), reels.third);
+        createSlots($('#ring4'), reels.fourth);
 
         // hook start button
         $('.go').on('click',function(){
