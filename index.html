@@ -24,27 +24,32 @@
                     <div id='ring3' class='ring'></div>
                     <div id='ring4' class='ring'></div>
                 </div>
-                <div>
-                    <button class='go'>Sprawdźmy!</button>
-                </div>
-
-                <div>
+                <div class='buttons'>
                     <label>
                         <input type='checkbox' id='xray'>
                         Poka kurwa w 3D
                     </label>
+
+                    <div>
+                        <button class='roll'>Sprawdźmy!</button>
+                    </div>
                     
                     <label>
                         <input type='checkbox' id='perspective'>
                         Zmień perspektywę
                     </label>
                 </div>
+                <div class="copyright">
+                    <b>&copy; 2021 by <a href='https://axeljankowski.github.io/' target='_blank'>Axel</a></b>
+                </div>
             </div>
         </div>
     </div>
     <audio controls>
-        <source src='./assets/heroes3.mp3' type='audio/mpeg'>
+        <source src='./assets/audio/heroes3.mp3' type='audio/mpeg'>
         Your browser does not support the audio element.
     </audio>
+    <audio id='buttonMp3' src='./assets/audio/button.mp3' preload='auto'></audio>
+    <audio id='rollMp3' src='./assets/audio/roll.mp3' preload='auto'></audio>
 </body>
 </html>

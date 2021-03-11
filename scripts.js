@@ -46,9 +46,9 @@ function createSlots(ring, text) {
 		// the position is randomized to 
 
         if (text) {
-            var content = $(slot).append('<p>' + text[i] + '</p>');
+            $(slot).append('<p>' + text[i] + '</p>');
         } else {
-            var content = $(slot).append('<p>' + ((seed + i)%12)+ '</p>');
+            $(slot).append('<p>' + ((seed + i)%12)+ '</p>');
         }
 
 		// add the poster to the row
@@ -63,19 +63,20 @@ function getSeed() {
 
 function spin(timer) {
 	//var txt = 'seeds: ';
-	for(var i = 1; i < 6; i++) {
+	for(var i = 1; i < 5; i++) {
 		var oldSeed = -1;
 		/*
 		checking that the old seed from the previous iteration is not the same as the current iteration;
 		if this happens then the reel will not spin at all
 		*/
-		var oldClass = $('#ring'+i).attr('class');
-		if(oldClass.length > 4) {
+		var oldClass = $('#ring' + i).attr('class');
+
+		if (oldClass.length > 4) {
 			oldSeed = parseInt(oldClass.slice(10));
-			console.log(oldSeed);
 		}
 		var seed = getSeed();
-		while(oldSeed == seed) {
+
+		while (oldSeed == seed) {
 			seed = getSeed();
 		}
 
@@ -83,6 +84,10 @@ function spin(timer) {
 			.css('animation','back-spin 1s, spin-' + seed + ' ' + (timer + i*0.5) + 's')
 			.attr('class','ring spin-' + seed);
 	}
+}
+
+function playSound(name) {
+    document.getElementById(name).play();
 }
 
 (function($) {
@@ -95,29 +100,32 @@ function spin(timer) {
         createSlots($('#ring4'), reels.fourth);
 
         // hook start button
-        $('.go').on('click',function(){
+        $('.roll').on('click', function() {
+            playSound('rollMp3');
             var timer = 2;
             spin(timer);
         })
 
         // hook xray checkbox
-        $('#xray').on('click',function(){
+        $('#xray').on('click', function() {
+            playSound('buttonMp3');
+
             //var isChecked = $('#xray:checked');
             var tilt = 'tiltout';
             
-        if($(this).is(':checked')) {
+            if ($(this).is(':checked')) {
                 tilt = 'tiltin';
                 $('.slot').addClass('backface-on');
-                $('#rotate').css('animation',tilt + ' 2s 1');
+                $('#rotate').css('animation', tilt + ' 2s 1');
 
-                setTimeout(function(){
-                $('#rotate').toggleClass('tilted');
+                setTimeout(function() {
+                    $('#rotate').toggleClass('tilted');
                 },2000);
             } else {
-        tilt = 'tiltout';
-                $('#rotate').css({'animation':tilt + ' 2s 1'});
+                tilt = 'tiltout';
+                $('#rotate').css({'animation': tilt + ' 2s 1'});
 
-                setTimeout(function(){
+                setTimeout(function() {
                     $('#rotate').toggleClass('tilted');
                     $('.slot').removeClass('backface-on');
                 },1900);
@@ -125,7 +133,9 @@ function spin(timer) {
         })
 
         // hook perspective
-        $('#perspective').on('click',function(){
+        $('#perspective').on('click', function() {
+            playSound('buttonMp3');
+
             $('#stage').toggleClass('perspective-on perspective-off');
         })	
     });
