@@ -10,8 +10,8 @@ const reels = {
         'zrobi w chuja', 'zdepcze', 'pokroi', 'wkurwi'
     ],
     third: [
-        'kupę', 'żonę', 'brata', 'banshee',
-        'psa', 'rzecznika', 'konia', 'fotel',
+        'konia', 'żonę', 'brata', 'banshee',
+        'psa', 'rzecznika', 'odchody', 'fotel',
         'pierścień', 'bochen', 'wilka', 'przyjaciela'
     ],
     fourth: [
